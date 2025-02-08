@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFB6C1;
+    position: relative;
+    text-align: center;
+}
+
+/* Center the image */
+.img {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    border-radius: 20px;
+}
+
+/* Valentine text */
+#valentine-text {
+    position: absolute;
+    top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Dancing Script", cursive;
+    font-size: 26px;
+    color: #D02090;
+}
+
+/* Centering the button container */
+#container {
+    position: absolute;
+    top: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+/* Button styling */
+button {
+    background-color: hotpink;
+    border: none;
+    width: 80px;
+    height: 40px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
