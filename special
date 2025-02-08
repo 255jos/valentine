@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="love.css">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #FFB6C1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .img {
+            max-width: 100%;
+            height: auto;
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        #valentine-text {
+            font-family: "Dancing Script", serif;
+            font-size: 24px;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+
+        #container {
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: hotpink;
+            border: none;
+            width: 100px;
+            height: 40px;
+            color: white;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        button:hover {
+            background-color: #FF69B4;
+        }
+
+        /* Keyframes for the random movement */
+        @keyframes escapeAnimation {
+            0% {
+                transform: translate(0, 0); /* Original position */
+            }
+            100% {
+                transform: translate(var(--moveX), var(--moveY)); /* Random position */
+            }
+        }
+    </style>
+</head>
+<body>
+   <div class="heart"></div>
+   <img id="first" class="img" src="download.gif" alt="Image">
+   <h1 id="valentine-text">Will you be my valentine?</h1>
+   <div id="container">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+   </div>
+
+   <script>
+    // Array of image sources and text
+    const images = [
+        { src: "uwu.gif", text: "Oh no, you didn't say yes! 😢" },
+        { src: "download(1).gif", text: "Still not convinced? 😔" },
+        { src: "download(2).gif", text: "Come on! It’s just one click! 😖" }
+    ];
+
+    let currentImageIndex = 0;  // Start at the first image
+
+    // Function to change the image and text when "No" is clicked
+    document.getElementById("no").addEventListener("click", function() {
+        currentImageIndex++;  // Move to the next image
+
+        // If we've reached the end of the array, loop back to the first image
+        if (currentImageIndex >= images.length) {
+            currentImageIndex = 0;
+        }
+
+        // Update the image source
+        document.getElementById("first").src = images[currentImageIndex].src;
+
+        // Update the text content based on the image
+        document.getElementById("valentine-text").textContent = images[currentImageIndex].text;
+
+        // Randomize the movement of the "No" button
+        const noButton = document.getElementById("no");
+
+        // Random X and Y positions (within a range)
+        const randomX = Math.floor(Math.random() * 300) - 150; // Moves within -150 to 150 pixels
+        const randomY = Math.floor(Math.random() * 300) - 150; // Moves within -150 to 150 pixels
+
+        // Set CSS variables for random movement
+        noButton.style.setProperty('--moveX', `${randomX}px`);
+        noButton.style.setProperty('--moveY', `${randomY}px`);
+
+        // Apply the animation to move the button
+        noButton.style.animation = 'escapeAnimation 0s forwards';
+    });
+
+    // Optional: Handle "Yes" button click
+    document.getElementById("yes").addEventListener("click", function() {
+        document.getElementById("valentine-text").textContent = "Yay! ❤️ i knew it!";
+        document.getElementById("first").src = "yay.gif";  
+    });
+   </script>
+</body>
+</html>
